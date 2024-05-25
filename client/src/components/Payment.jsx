@@ -1,37 +1,64 @@
 import React, { Component } from "react";
-
 import moment from "moment";
+import { withRouter } from "react-router-dom";
+import { Modal, Button } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 class Payment extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showModal: false,
+    };
+  }
+
+  handleShow = () => {
+    this.setState({ showModal: true });
+  };
+
+  handleClose = () => {
+    this.setState({ showModal: false });
+  };
+
+  handleConfirm = () => {
+    // Perform any action upon confirmation here
+    // For now, let's just show a confirmation message and redirect to the home page
+    alert("Xác nhận thành công!");
+    this.props.history.push("/"); // Assuming "/" is your home page route
+    window.location.reload(); // Reload the page
+  };
+  
+  
+
+  // handleConfirm = () => {
+  //   // Perform any action upon confirmation here
+  //   // For now, let's just show a confirmation message and reload the page
+  //   alert("Xác nhận thành công!");
+  //   window.location.reload();
+  // };
+  
   render() {
     return (
-      <main class="page">
-        <section class="payment-form dark">
-          <div class="container">
-            <div class="block-heading">
-              <br></br>
-              <br></br>
+      <main className="page">
+        <section className="payment-form dark">
+          <div className="container">
+            <div className="block-heading">
+              <br />
+              <br />
 
-              <h2>Payment Details</h2>
-              <hr></hr>
-              <p>
-                Your Order will be delivered around:{" "}
-                <b>{moment().add(5, "hours").format("LT")}</b>
-              </p>
-              <p>(5 hours Delivery Time)</p>
-              <hr></hr>
-              <p>
-                Kindly confirm your selected food items and fill out the
-                following payment form to place your order!
-              </p>
+              <h2>Chi tiết thanh toán</h2>
+              <hr />
             </div>
 
             <form>
-              <div class="products">
-                <h3 class="title">Payment</h3>
+              <div className="products">
+                <h3 className="title">Thanh Toán</h3>
                 <ul className="list-group mb-3">
                   {this.props.shoppingCartFoodItems.map((foodItem) => (
-                    <li className="list-group-item d-flex justify-content-between">
+                    <li
+                      className="list-group-item d-flex justify-content-between"
+                      key={foodItem.name}
+                    >
                       <div>
                         <span>
                           <img
@@ -51,225 +78,68 @@ class Payment extends Component {
                             </span>
                           </h6>
                           <small className="text-success">
-                            Total Serving: {foodItem.counter * foodItem.serving}{" "}
-                            people
-                            <br></br>
-                            Price Per Serving: Rs. {foodItem.price}
+                            Giá: {foodItem.price}
                           </small>
                         </span>
                       </div>
                       <span className="text-muted">
-                        Rs. {foodItem.price * foodItem.counter}
+                        Tổng tiền: {foodItem.price * foodItem.counter} VNĐ
                       </span>
                     </li>
                   ))}
                 </ul>
 
-                <div class="total">
-                  Grand Total
-                  <span class="price">Rs. {this.props.billAmount}</span>
+                <div className="total">
+                  Tổng tiền:{" "}
+                  <span className="price">{this.props.billAmount} VNĐ</span>
                 </div>
               </div>
 
-              <div class="card-details">
-                <h3 class="title">Personal Details</h3>
-                <div class="row">
-                  <div class="form-group col-sm-6">
-                    <label for="firstname">First Name</label>
-                    <input
-                      id="firstname"
-                      type="text"
-                      class="form-control"
-                      placeholder="First Name"
-                      aria-label="Card Holder"
-                      aria-describedby="basic-addon1"
-                      required
-                      text
-                    ></input>
-                  </div>
-                  <div class="form-group col-sm-6">
-                    <label for="lastname">Last Name</label>
-                    <input
-                      id="lastname"
-                      type="text"
-                      class="form-control"
-                      placeholder="Last Name"
-                      aria-label="Card Holder"
-                      aria-describedby="basic-addon1"
-                      required
-                      text
-                    ></input>
-                  </div>
-                  <div class="form-group col-sm-12">
-                    <label for="email">Email</label>
-                    <input
-                      id="email"
-                      type="email"
-                      class="form-control"
-                      placeholder="Email"
-                      aria-label="Card Holder"
-                      aria-describedby="basic-addon1"
-                      required
-                      email
-                    ></input>
-                  </div>
-                  <div class="form-group col-sm-12">
-                    <label for="number">Phone Number</label>
-                    <input
-                      id="number"
-                      type="number"
-                      class="form-control"
-                      placeholder="Phone Number"
-                      aria-label="Card Holder"
-                      aria-describedby="basic-addon1"
-                      required
-                      number
-                    ></input>
-                  </div>
-                  <div class="form-group col-sm-12">
-                    <label for="Address">Address</label>
-                    <input
-                      id="Address"
-                      type="Address"
-                      class="form-control"
-                      placeholder="Home Address"
-                      aria-label="Card Holder"
-                      aria-describedby="basic-addon1"
-                      required
-                    ></input>
-                  </div>
-                  <div class="form-group col-sm-6">
-                    <label for="Province">Province</label>
-                    <input
-                      id="Province"
-                      type="Province"
-                      class="form-control"
-                      placeholder="Province"
-                      aria-label="Card Holder"
-                      aria-describedby="basic-addon1"
-                      required
-                    ></input>
-                  </div>
-                  <div class="form-group col-sm-6">
-                    <label for="City">City</label>
-                    <input
-                      id="City"
-                      type="City"
-                      class="form-control"
-                      placeholder="City"
-                      aria-label="Card Holder"
-                      aria-describedby="basic-addon1"
-                      required
-                    ></input>
-                  </div>
-                  <div class="form-group col-sm-8">
-                    <label for="Country">Country</label>
-                    <input
-                      id="Country"
-                      type="Country"
-                      class="form-control"
-                      placeholder="Country"
-                      aria-label="Card Holder"
-                      aria-describedby="basic-addon1"
-                      required
-                    ></input>
-                  </div>
-                  <div class="form-group col-sm-4">
-                    <label for="ZIP">ZIP</label>
-                    <input
-                      id="ZIP"
-                      type="ZIP"
-                      class="form-control"
-                      placeholder="ZIP"
-                      aria-label="Card Holder"
-                      aria-describedby="basic-addon1"
-                      required
-                      number
-                    ></input>
-                  </div>
-                </div>
-              </div>
-
-              <div class="card-details">
-                <h3 class="title">Credit Card Details</h3>
-                <div class="row">
-                  <div class="form-group col-sm-7">
-                    <label for="card-holder">Card Holder Name</label>
-                    <input
-                      id="card-holder"
-                      type="text"
-                      class="form-control"
-                      placeholder="Card Holder Name"
-                      aria-label="Card Holder"
-                      aria-describedby="basic-addon1"
-                      text
-                      required
-                    ></input>
-                  </div>
-                  <div class="form-group col-sm-5">
-                    <label for="">Expiration Date</label>
-                    <div class="input-group expiration-date">
-                      <input
-                        type="number"
-                        class="form-control"
-                        placeholder="MM"
-                        aria-label="MM"
-                        aria-describedby="basic-addon1"
-                        number
-                        required
-                      ></input>
-                      <span class="date-separator">/</span>
-                      <input
-                        type="number"
-                        class="form-control"
-                        placeholder="YY"
-                        aria-label="YY"
-                        aria-describedby="basic-addon1"
-                        number
-                        required
-                      ></input>
-                    </div>
-                  </div>
-                  <div class="form-group col-sm-8">
-                    <label for="card-number">Card Number</label>
-                    <input
-                      id="card-number"
-                      type="number"
-                      class="form-control"
-                      placeholder="Card Number"
-                      aria-label="Card Holder"
-                      aria-describedby="basic-addon1"
-                      number
-                      required
-                    ></input>
-                  </div>
-                  <div class="form-group col-sm-4">
-                    <label for="cvc">CVC</label>
-                    <input
-                      id="cvc"
-                      type="number"
-                      class="form-control"
-                      placeholder="CVC"
-                      aria-label="Card Holder"
-                      aria-describedby="basic-addon1"
-                      number
-                      required
-                    ></input>
-                  </div>
-
-                  <div class="form-group col-sm-12">
-                    <button
-                      type="submit"
-                      class="btn btn-outline-success btn-block"
+              <div className="card-details">
+                <div className="row">
+                  <div className="form-group col-sm-12">
+                    <Button
+                      type="button"
+                      className="btn btn-outline-success btn-block"
+                      onClick={this.handleShow}
                     >
-                      Proceed to Place an order of Rs. {this.props.billAmount}
-                    </button>
+                      Tiến hành đặt hàng {this.props.billAmount}
+                    </Button>
                   </div>
                 </div>
               </div>
             </form>
           </div>
         </section>
+
+        <Modal show={this.state.showModal} onHide={this.handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>QR Code Thanh Toán</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <div style={{ textAlign: "center" }}>
+              <img
+                src={require("../photos/qr-code.jpg")}
+                alt="QR Code"
+                style={{ width: "200px", height: "200px" }}
+              />
+            </div>
+            <div style={{ textAlign: "center", marginTop: "10px" }}>
+              <p>Lưu ý: Nhập đúng nội dung chuyển khoản: Số lượng + Sản phẩm + Địa chỉ + Số điện thoại </p>
+              <p>Ví dụ: 2 trachanh tuancuong 0123456789 </p>
+            </div>
+          </Modal.Body>
+          <Modal.Footer>
+  <Button variant="secondary" onClick={this.handleClose}>
+    Đóng
+  </Button>
+  <Button variant="primary" onClick={this.handleConfirm}>
+    Xác nhận
+  </Button>
+</Modal.Footer>
+
+        </Modal>
+
         <footer>
           <p>Home Cook © 2020 All Rights Reserved</p>
           <p>Shahzaib Ayyub | 17I-0251</p>
@@ -279,4 +149,4 @@ class Payment extends Component {
   }
 }
 
-export default Payment;
+export default withRouter(Payment);

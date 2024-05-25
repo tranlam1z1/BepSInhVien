@@ -18,13 +18,13 @@ class ShoppingCart extends Component {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Shopping Cart
+            Giỏ Hàng
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div className="col-md-12 order-md-2 mb-12">
             <h4 className="d-flex justify-content-between align-items-center mb-3">
-              <span className="text-muted">Food Items</span>
+              <span className="text-muted">Đơn Hàng</span>
               <span className="badge badge-success badge-pill">
                 {this.props.shoppingCartCounter}
               </span>
@@ -51,15 +51,12 @@ class ShoppingCart extends Component {
                         </span>
                       </h6>
                       <small className="text-success">
-                        Total Serving: {foodItem.counter * foodItem.serving}{" "}
-                        people
-                        <br></br>
-                        Price Per Serving: Rs. {foodItem.price}
+                        Giá:  {foodItem.price} VNĐ
                       </small>
                     </span>
                   </div>
                   <span className="text-muted">
-                    Rs. {foodItem.price * foodItem.counter}
+                    Tổng tiền: {foodItem.price * foodItem.counter}
                   </span>
                 </li>
               ))}
@@ -72,7 +69,7 @@ class ShoppingCart extends Component {
               to={"/"}
               style={{ color: "inherit", textDecoration: "inherit" }}
             >
-              Close
+              Đóng
             </Link>
           </Button>
           <Button variant="outline-success" onClick={this.props.onHide}>
@@ -80,7 +77,7 @@ class ShoppingCart extends Component {
               to={<Payment />}
               style={{ color: "inherit", textDecoration: "inherit" }}
             >
-              Order Rs. {this.props.billAmount}
+              Thanh toán:  {this.props.billAmount}
             </Link>
           </Button>
         </Modal.Footer>

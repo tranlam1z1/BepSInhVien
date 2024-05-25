@@ -13,10 +13,10 @@ class RenderCarousal extends Component {
             alt="First slide"
           />
           <Carousel.Caption>
-            <h1 style={{ color: "white" }}>Welcome to Home Cook!</h1>
+            <h1 style={{ color: "white" }}>Chào Mừng Đến Với Bếp Sinh Viên!</h1>
             <p>
-              Order delicious homemade food from local chefs in Islamabad.
-              Scroll down to see todays menu.
+            Đặt món ăn ngon tự chế biến từ các đầu bếp.
+              Cuộn xuống để xem thực đơn ngày hôm nay.
             </p>
           </Carousel.Caption>
         </Carousel.Item>
@@ -29,8 +29,8 @@ class RenderCarousal extends Component {
           />
 
           <Carousel.Caption>
-            <h1>Delivery at your Doorstep!</h1>
-            <p>Enjoy exceptional taste with delivery time around 5 hours.</p>
+            <h1>Giao hàng tận nhà!</h1>
+            <p>Thưởng thức hương vị đặc biệt với thời gian giao hàng khoảng 15 phút.</p>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>

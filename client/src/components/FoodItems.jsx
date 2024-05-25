@@ -1,28 +1,29 @@
+// File path: ./src/components/FoodItems.jsx
+
 import React, { Component } from "react";
 import moment from "moment";
-
 import Card from "react-bootstrap/Card";
 import CardColumns from "react-bootstrap/CardColumns";
 import Button from "react-bootstrap/Button";
-
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import Footer from "./Footer"; // Ensure the path is correct
 
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
     items: 3,
-    slidesToSlide: 3, // optional, default to 1.
+    slidesToSlide: 1,
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
     items: 2,
-    slidesToSlide: 2, // optional, default to 1.
+    slidesToSlide: 1,
   },
   mobile: {
     breakpoint: { max: 464, min: 0 },
     items: 1,
-    slidesToSlide: 1, // optional, default to 1.
+    slidesToSlide: 1,
   },
 };
 
@@ -32,16 +33,16 @@ class FoodItems extends Component {
       <div className="container col-md-10">
         <div className="py-4 text-center">
           <h2 style={{ color: "white" }}>
-            Today's Menu ({moment().format("dddd")})
+            Thực đơn ({moment().format("dddd")})
           </h2>
-          <h3>-- Menu Changes {moment().endOf("day").fromNow()} --</h3>
+          <h3>-- Thực đơn thay đổi theo ngày --</h3>
           <p style={{ color: "white" }}>
-            Fill up your cart with our tasty treats!
+          Đổ đầy giỏ hàng của bạn với các món ngon của chúng tôi!
           </p>
         </div>
         <CardColumns>
           {this.props.foodItems.map((foodItem) => (
-            <Card border="dark" bg="dark" text="white" width="10px">
+            <Card border="dark" bg="dark" text="white" key={foodItem.name}>
               <Card.Img
                 variant="top"
                 src={require("../photos/" + foodItem.name + ".jpg")}
@@ -50,10 +51,8 @@ class FoodItems extends Component {
                 <h3>
                   {foodItem.name} {this.props.renderCounter(foodItem)}
                 </h3>
-
-                <Card.Text>{foodItem.description} </Card.Text>
-                <h5>Price: {foodItem.price}</h5>
-                <h6>{foodItem.serving} persons can eat each serving</h6>
+                <Card.Text>{foodItem.description}</Card.Text>
+                <h5>Giá: {foodItem.price} VNĐ</h5>
                 <Button
                   className="m-2"
                   variant="outline-success"
@@ -61,58 +60,53 @@ class FoodItems extends Component {
                     this.props.addCounter(foodItem, this.props.billAmount)
                   }
                 >
-                  Place Order: Rs. {foodItem.price}
+                  Đặt Hàng
                 </Button>
                 {this.props.renderCloseButtonOnCart(foodItem)}
               </Card.Body>
               <Card.Footer>
-                <small>Delivery time: 5 Hours</small>
-                <br></br>
-                <small className="text-muted">
-                  Menu Changes {moment().endOf("day").fromNow()}
-                </small>
+                <small>Thời gian giao hàng: Khoảng 15 phút</small>
+                <br />
               </Card.Footer>
             </Card>
           ))}
         </CardColumns>
         <Carousel
-          swipeable={false}
-          draggable={false}
-          showDots={true}
+          swipeable
+          draggable
+          showDots
           responsive={responsive}
-          ssr={true} // means to render carousel on server-side.
-          infinite={true}
-          autoPlay={this.props.deviceType !== "mobile" ? true : false}
-          autoPlaySpeed={1000}
-          keyBoardControl={true}
-          customTransition="all .5"
-          transitionDuration={1000}
+          ssr
+          infinite
+          autoPlay={this.props.deviceType !== "mobile"}
+          autoPlaySpeed={3000}
+          keyBoardControl
+          customTransition="transform 500ms ease-in-out"
+          transitionDuration={500}
           containerClass="carousel-container"
           removeArrowOnDeviceType={["tablet", "mobile"]}
           deviceType={this.props.deviceType}
           dotListClass="custom-dot-list-style"
           itemClass="carousel-item-padding-40-px"
         >
-          <div>
-            <img src={require("../photos/Chicken Enchiladas.jpg")}></img>
-          </div>
-          <div>
-            <img
-              src={require("../photos/Pakistani Stuffed Chicken Patties.jpg")}
-            ></img>
-          </div>
-          <div>
-            <img
-              src={require("../photos/Chicken and Cheese Quesadillas.jpg")}
-            ></img>
-          </div>
-          <div>
-            <img src={require("../photos/Pizza Fries.jpg")}></img>
-          </div>
+          {["Mì trộn Idomie", "Mì tương đen", "Trà chanh", "Trà thái"].map(
+            (item) => (
+              <div key={item} className="carousel-image-container">
+                <img
+                  src={require(`../photos/${item}.jpg`)}
+                  alt={item}
+                  className="d-block w-100 carousel-image"
+                />
+              </div>
+            )
+          )}
         </Carousel>
+        <Footer /> {/* Include the Footer component */}
       </div>
     );
   }
 }
 
 export default FoodItems;
+
+

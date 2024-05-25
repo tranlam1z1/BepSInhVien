@@ -345,14 +345,14 @@ class App extends Component {
             >
               <img
                 alt="Home Cook Logo"
-                src={require("./photos/favicon.ico")}
-                width="30"
-                height="30"
+                src={require("./photos/logo.jpg")}
+                width="40"
+                height="40"
                 className="d-inline-block align-top"
                 style={{ borderRadius: "50px" }}
               />
               {"  "}
-              Home Cook
+              Bếp Sinh Viên
             </Link>
           </Navbar.Brand>
           <Navbar.Collapse className="justify-content-end">

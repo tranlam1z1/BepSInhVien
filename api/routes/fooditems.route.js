@@ -579,85 +579,47 @@ let Saturday = [
 
 let Sunday = [
   {
-    _id: 10,
-    name: "Chicken and Cheese Quesadillas",
-    description:
-      "Chicken Quesadillas is a one of a very famous Mexican dish commonly made in Mexican household.",
-    price: 710,
+    _id: 1,
+    name: "Mì trộn Idomie",
+    description: " Một món ăn ngon miệng kết hợp giữa mì, rau sống, thịt và nước sốt đặc biệt, tạo nên hương vị đa dạng và hấp dẫn.",
+    price: 35000,
     serving: 6,
     counter: 0,
   },
   {
-    _id: 11,
-    name: "Pakistani Stuffed Chicken Patties",
+    _id: 2,
+    name: "Mì tương đen",
     description:
-      "You will love these stuffed chicken patties as an appetizer or any party.",
-    price: 400,
-    serving: 5,
-    counter: 0,
-  },
-  {
-    _id: 12,
-    name: "Plain Vanilla Sponge Cake",
-    description:
-      "This is a plain easy to make vanilla sponge cake that which is very fluffy and light. Best enjoyed with tea or with icing.",
-    price: 800,
-    serving: 10,
+      "Món mì Hàn Quốc đặc trưng với sợi mì dai ngon phủ sốt tương đen đậm đà, kèm theo thịt và rau củ..",
+    price: 35000,
+    serving: 4,
     counter: 0,
   },
   {
     _id: 3,
-    name: "Fish in Hot Szechuan sauce",
-    description: "This is a restaurant grade fried fish in Hot Szechuan sauce.",
-    price: 1600,
-    serving: 6,
-    counter: 0,
-  },
-  {
-    _id: 4,
-    name: "Baked stuffed chicken breast",
+    name: "Trà chanh",
     description:
-      "Stuffed chicken breast is an awesome main dish that can be served with spinach, coleslaw and your favorite sauce.",
-    price: 870,
-    serving: 4,
-    counter: 0,
-  },
-  {
-    _id: 5,
-    name: "Kabuli Afghani Pulao",
-    description:
-      "Afghani Pulao as its name suggest an Afghan dish but very famous in Pakistan and all over the world.",
-    price: 450,
+      " Thức uống giải khát tươi mát với hương chanh thơm lừng, mang lại cảm giác sảng khoái tức thì..",
+    price: 12000,
     serving: 8,
     counter: 0,
   },
   {
-    _id: 6,
-    name: "Pizza Fries",
+    _id: 4,
+    name: "Trà thái",
     description:
-      "These pizza fries are like loaded fries that are loaded with chicken cheese and vegetables.",
-    price: 560,
+      "Một loại trà sữa Thái Lan có màu cam đặc trưng, thơm mùi trà đậm đà, béo ngậy và ngọt dịu..",
+    price: 15000,
     serving: 6,
     counter: 0,
   },
-
   {
-    _id: 9,
-    name: "Irani Chelo Kabab with Grilled Vegetables",
+    _id: 5,
+    name: "Mận lắc",
     description:
-      "If you like Arabic Kebabs you will love these Irani Chelow Kabab.",
-    price: 1100,
+      "Món ăn vặt hấp dẫn với những quả mận tươi giòn lắc cùng muối, đường, và ớt tạo nên hương vị chua cay ngọt độc đáo..",
+    price: 25000,
     serving: 4,
-    counter: 0,
-  },
-
-  {
-    _id: 13,
-    name: "Garlic Tawa Naan",
-    description:
-      "No Tandoor no problem? No oven no problem? These no-bake Tawa garlic Naan will do the trick.",
-    price: 70,
-    serving: 2,
     counter: 0,
   },
 ];
